@@ -4,17 +4,18 @@ var everySecond = setInterval(getTime, 1000);
 
 //Variable for checking if the mouse is hovering
 let mouseIsOver = false;
+let hexNumber;
 
 //Get HTML elements to modify
-let clock = document.querySelector(".clock");
-let timerBar = document.querySelector(".timer-bar");
-let background = document.querySelector(".clock-container");
+let $clock = document.querySelector(".clock");
+let $timerBar = document.querySelector(".timer-bar");
+let $background = document.querySelector(".clock-container");
 
-clock.onmouseover = function() {
+$clock.onmouseover = function() {
   mouseIsOver = true;
 };
 
-clock.onmouseout = function() {
+$clock.onmouseout = function() {
   mouseIsOver = false;
 };
 
@@ -38,13 +39,8 @@ function getTime() {
   //Sets today to the current date/time
   let today = new Date();
 
-  //Get HTML elements to modify
-  // let clock = document.querySelector(".clock");
-  // let timerBar = document.querySelector(".timer-bar");
-  // let background = document.querySelector(".clock-container");
-
-  let hexNumber = "#";
-  // let mouseIsOver = false;
+  //Resetting this variable every iteration
+  hexNumber = "#";
 
   //.getHours() used on Date object to get hours ===============================
   let h = today.getHours();
@@ -69,7 +65,6 @@ function getTime() {
 
   //.getSeconds() used to get seconds from Date object =========================
   let s = today.getSeconds();
-
   //Calculate the percentage of a minute the seconds represent
   let percentOfMinute = (s/60) * 100;
   //Round the decimal to the nearest whole number
@@ -92,32 +87,18 @@ function getTime() {
   let bar = "_".repeat(percentOfMinute / 2);
   console.log(bar);
 
-  //If the mouse is hovering, change mouseIsOver to True
-  // clock.onmouseover = function() {
-  //   mouseIsOver = true;
-  //   console.log("testing in",mouseIsOver);
-  // };
-  // clock.onmouseout = function() {
-  //   mouseIsOver = false;
-  // };
-
   //Before setting the clock text content, check to see if the mouse is hovering
   // console.log(mouseIsOver);
   if (mouseIsOver) {
-    clock.textContent = `${hexH}:${hexM}:${hexS}`;
+    $clock.textContent = `${hexH}:${hexM}:${hexS}`;
     console.log("yes i'm true");
   }
   else {
     //Adds the time to the html to display on the page
-    clock.textContent = `${h}:${m}:${s}`;
+    $clock.textContent = `${h}:${m}:${s}`;
   }
   //Adjust the progress bar
-  timerBar.textContent = bar;
+  $timerBar.textContent = bar;
   //Change the background color
-  background.style.backgroundColor = hexNumber;
+  $background.style.backgroundColor = hexNumber;
 }
-
-//Show the hex color when the mouse hovers over the clock time
-// document.querySelector(".clock").onmouseover = function() {
-//   this.textContent = "Testing";
-// }
