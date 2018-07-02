@@ -7,9 +7,10 @@ img {
 }
 
 .clock-container {
-  /* background-color: #F08851; */
+  /* background-color: #0e0836; */
   height: 500px;
   position: relative;
+  color: white;
 }
 
 .clock {
