@@ -22,6 +22,7 @@ $clock.onmouseout = function() {
 
 //Creating a function to get the hex number ====================================
 function getHex(number) {
+  'use strict';
   //Use toString() method to get the hex of the number
   var temp = number.toString(16);
   //If the hex is single digit, add a 0 to the beginning
@@ -30,12 +31,14 @@ function getHex(number) {
   }
   return temp;
 }
-
+//Instead of the if statements, could use number.toString().padStart(2, 0);
+//best way hours = ('0' + date.getHours()).slice(-2); This adds a 0 to the front and then just
+//grabs two chars right to left (leaves off the added 0 if it's not needed)
+//alternate if would be hours<10? hours = "0" + hours: null
 
 //Creating the function called in everySecond ==================================
 function getTime() {
-  console.log('mady', mouseIsOver);
-
+  'use strict';
   //Sets today to the current date/time
   let today = new Date();
 
@@ -72,6 +75,7 @@ function getTime() {
   //Add the seconds to the hex number
   let hexS = getHex(s);
   hexNumber = hexNumber + hexS;
+  
   //If number is less than 10, add a 0 so all times have two digits
   if (s < 10) {
     s = "0" + s;
